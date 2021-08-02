@@ -7,11 +7,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class UserDao {
-    public abstract Connection getConnection() throws SQLException;
+public class UserDao {
+    private final ConnectionMaker connectionMaker;
+
+    public UserDao() {
+        this.connectionMaker = new DConnectionMaker();
+    }
 
     public void add(User user) throws SQLException {
-        Connection c = getConnection();
+        Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?, ?, ?)");
         ps.setString(1, user.getId());
@@ -25,7 +29,7 @@ public abstract class UserDao {
     }
 
     public User get(String id) throws SQLException {
-        Connection c = getConnection();
+        Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c.prepareStatement("select * from users where id=?");
         ps.setString(1, id);

@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class NUserDao extends UserDao {
+public class DConnectionMaker implements ConnectionMaker {
 
     @Override
-    public Connection getConnection() throws SQLException {
+    public Connection makeConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
     }
 

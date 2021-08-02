@@ -1,6 +1,5 @@
 package com.example.toby.ch01;
 
-import com.example.toby.ch01.dao.DUserDao;
 import com.example.toby.ch01.dao.UserDao;
 
 import java.sql.SQLException;
@@ -8,7 +7,7 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        UserDao dao = new DUserDao();
+        UserDao dao = new UserDao();
         User user = new User();
         user.setId("whiteship");
         user.setName("백기선");
