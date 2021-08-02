@@ -1,13 +1,14 @@
 package com.example.toby.ch01;
 
+import com.example.toby.ch01.dao.DConnectionMaker;
 import com.example.toby.ch01.dao.UserDao;
 
 import java.sql.SQLException;
 
-public class Main {
+public class UserDaoTest {
 
     public static void main(String[] args) throws SQLException {
-        UserDao dao = new UserDao();
+        UserDao dao = new UserDao(new DConnectionMaker());
         User user = new User();
         user.setId("whiteship");
         user.setName("백기선");
