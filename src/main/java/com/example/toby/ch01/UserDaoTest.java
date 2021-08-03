@@ -2,13 +2,16 @@ package com.example.toby.ch01;
 
 import com.example.toby.ch01.dao.DaoFactory;
 import com.example.toby.ch01.dao.UserDao;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
 
 public class UserDaoTest {
 
     public static void main(String[] args) throws SQLException {
-        UserDao dao = new DaoFactory().userDao();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
+        UserDao dao = applicationContext.getBean("userDao", UserDao.class);
         User user = new User();
         user.setId("whiteship");
         user.setName("백기선");
