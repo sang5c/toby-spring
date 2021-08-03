@@ -1,6 +1,6 @@
 package com.example.toby.ch01;
 
-import com.example.toby.ch01.dao.DConnectionMaker;
+import com.example.toby.ch01.dao.DaoFactory;
 import com.example.toby.ch01.dao.UserDao;
 
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class UserDaoTest {
 
     public static void main(String[] args) throws SQLException {
-        UserDao dao = new UserDao(new DConnectionMaker());
+        UserDao dao = new DaoFactory().userDao();
         User user = new User();
         user.setId("whiteship");
         user.setName("백기선");
