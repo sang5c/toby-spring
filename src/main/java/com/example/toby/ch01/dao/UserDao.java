@@ -1,6 +1,7 @@
 package com.example.toby.ch01.dao;
 
 import com.example.toby.ch01.User;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +11,16 @@ import java.sql.SQLException;
 public class UserDao {
     private final ConnectionMaker connectionMaker;
 
+    // 애플리케이션 컨텍스트를 이용한 의존관계 검색
+    public UserDao() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+        this.connectionMaker = context.getBean("connectionMaker", ConnectionMaker.class);
+    }
+
+    // 의존관계 검색
     public UserDao(ConnectionMaker connectionMaker) {
-        this.connectionMaker = connectionMaker;
+        DaoFactory daoFactory = new DaoFactory();
+        this.connectionMaker = daoFactory.connectionMaker();
     }
 
     public void add(User user) throws SQLException {
