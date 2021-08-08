@@ -1,4 +1,6 @@
-package com.example.toby.ch01.dao;
+package com.example.toby.ch01.countingdao;
+
+import com.example.toby.ch01.dao.ConnectionMaker;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,7 +17,7 @@ public class CountingConnectionMaker implements ConnectionMaker {
     @Override
     public Connection makeConnection() throws SQLException {
         this.counter++;
-        return connectionMaker;
+        return connectionMaker.makeConnection();
     }
 
     public int getCounter() {

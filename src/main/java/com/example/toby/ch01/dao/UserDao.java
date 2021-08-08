@@ -17,10 +17,11 @@ public class UserDao {
         this.connectionMaker = context.getBean("connectionMaker", ConnectionMaker.class);
     }
 
-    // 의존관계 검색
     public UserDao(ConnectionMaker connectionMaker) {
-        DaoFactory daoFactory = new DaoFactory();
-        this.connectionMaker = daoFactory.connectionMaker();
+        // 의존관계 검색
+        // DaoFactory daoFactory = new DaoFactory();
+        // this.connectionMaker = daoFactory.connectionMaker();
+        this.connectionMaker = connectionMaker;
     }
 
     public void add(User user) throws SQLException {
