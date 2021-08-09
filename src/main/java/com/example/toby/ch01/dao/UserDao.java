@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class UserDao {
     private final ConnectionMaker connectionMaker;
+    private ConnectionMaker setterConnectionMaker;
 
     // 애플리케이션 컨텍스트를 이용한 의존관계 검색
     public UserDao() {
@@ -22,6 +23,10 @@ public class UserDao {
         // DaoFactory daoFactory = new DaoFactory();
         // this.connectionMaker = daoFactory.connectionMaker();
         this.connectionMaker = connectionMaker;
+    }
+
+    public void setConnectionMaker(ConnectionMaker connectionMaker) {
+        this.setterConnectionMaker = connectionMaker;
     }
 
     public void add(User user) throws SQLException {

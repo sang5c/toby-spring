@@ -11,6 +11,14 @@ public class DaoFactory {
         return new UserDao(connectionMaker());
     }
 
+    // 수정자 메소드 DI
+    // @Bean
+    // public UserDao userDao() {
+    //     UserDao userDao = new UserDao();
+    //     userDao.setConnectionMaker(connectionMaker());
+    //     return userDao;
+    // }
+
     @Bean
     public ConnectionMaker connectionMaker() {
         return new DConnectionMaker();
