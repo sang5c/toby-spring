@@ -1,7 +1,7 @@
 package com.example.toby.ch01;
 
-import com.example.toby.ch01.dao.DaoFactory;
 import com.example.toby.ch01.dao.UserDao;
+import com.example.toby.ch01.datasource.DataFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class UserDaoTest {
 
     public static void main(String[] args) throws SQLException {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DataFactory.class);
         UserDao dao = applicationContext.getBean("userDao", UserDao.class);
         User user = new User();
         user.setId("whiteship");
